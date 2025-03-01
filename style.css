@@ -396,6 +396,10 @@ border-left: 2px solid var(--main-color);
     border: 5px solid transparent;
     cursor: pointer;
     transition: 0.4s ease-in-out;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 4rem;
 }
 .service-box:hover
 {
