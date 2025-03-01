@@ -384,7 +384,7 @@ border-left: 2px solid var(--main-color);
 .services-container
 {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr); 
     align-items: center;
     gap: 2.5rem;
 }
@@ -414,17 +414,17 @@ border-left: 2px solid var(--main-color);
     align-items: baseline;
     padding: 5rem 5rem;
 }
-.service-info h4
+.services-info h4
 {
 font-size: 3rem;
 font-weight: 800;
 line-height: 2;
 }
-.service-info p
+.services-info p
 {
     font-size: 1.6rem;
     font-weight: 600;
-    max-height: 1000px;
+    max-height: 100px;
     line-height: 1.7;
     margin: auto;
 }
