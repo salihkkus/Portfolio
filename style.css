@@ -726,3 +726,37 @@ margin-top: 2rem;
         grid-template-columns: repeat(1,1fr);
     }
 }
+.animated-border-box {
+    position: relative;
+    padding: 20px 40px;
+    font-size: 24px;
+    color: white;
+    background-color: #00ffee;
+    border-radius: 10px;
+  }
+  
+  .animated-border-box::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffee, #0000ff, #7f00ff, #ff00ff);
+    background-size: 300% 300%;
+    border-radius: 15px;
+    z-index: -1;
+    animation: borderAnimation 3s linear infinite;
+  }
+  
+  @keyframes borderAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
