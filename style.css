@@ -136,7 +136,7 @@ transition: 04s ease-in-out;
 }
 .home-content p
 {
-    font-size: 1.5rem;
+    font-size: 1.85rem;
     font-weight: 500;
     line-height: 1.8;
     max-width: 1000px;
@@ -234,16 +234,16 @@ border-left: 2px solid var(--main-color);
         content: "Game Developer";
     }
     21% , 40%{
-        content: "Game Developer";
+        content: "Game Designer";
     }
     41% , 60%{
-        content: "Game Developer";
+        content: "Computer Engineer";
     }
     61% , 80%{
-        content: "Game Developer";
+        content: "Software Engineer";
     }
     81% , 100%{
-        content: "Game Developer";
+        content: "Web Developer";
     }
 }
 @keyframes typing
