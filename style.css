@@ -760,3 +760,24 @@ margin-top: 2rem;
       background-position: 0% 50%;
     }
   }
+  #messageBox {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--main-color);
+    color: black;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--main-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(20px);
+}
+
+#messageBox.show {
+    opacity: 1;
+    transform: translateY(0);
+}
