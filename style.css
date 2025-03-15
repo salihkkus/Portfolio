@@ -785,3 +785,6 @@ margin-top: 2rem;
     opacity: 1;
     transform: translateY(0);
 }
+canvas {
+    display: block;
+}
