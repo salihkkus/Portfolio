@@ -6,7 +6,7 @@
     border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: "Kanit", sans-serif;;
+    font-family: "Kanit", sans-serif;
 }
 :root
 {
@@ -43,7 +43,7 @@ body{
 }
 .logo
 {
-    font-size: 3rem;
+    font-size: 5rem;
     color: var(--text-color);
     font-weight: 800;
     cursor: pointer;
@@ -788,3 +788,20 @@ margin-top: 2rem;
 canvas {
     display: block;
 }
+@font-face {
+    font-family: 'myFont';
+    src: url('neima.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.logo
+{
+    font-weight: bold;
+    font-family: 'myFont';
+}
+.logo span
+{
+    font-weight: bold;
+    font-family: 'myFont';
+}   
+
