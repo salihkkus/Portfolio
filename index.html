@@ -1,206 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html class="dark" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salih Karakus</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Salih Karakuş - Portfolio</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,wght@0,400;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "accent": "#10b981",
+                        "primary-container": "#e2e2e2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-variant": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary-container": "#b5b5b5",
+                        "secondary": "#c7c6c6",
+                        "on-tertiary-fixed-variant": "#4b4544",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-background": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-secondary": "#303031",
+                        "tertiary-fixed-dim": "#cec5c2",
+                        "surface": "#131313",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-bright": "#393939",
+                        "tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-tint": "#c6c6c6",
+                        "secondary-container": "#464747",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-container": "#6a6361",
+                        "surface-container": "#201f1f",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#444748",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#636465",
+                        "primary": "#ffffff",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed": "#1f1b19",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary": "#342f2e",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-dim": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131313",
+                        "inverse-primary": "#5d5f5f",
+                        "on-primary": "#2f3131",
+                        "tertiary-container": "#eae0dd",
+                        "tertiary-fixed": "#eae0dd",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#c7c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "64px",
+                        "gutter": "32px",
+                        "section-gap": "128px",
+                        "container-max": "1200px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "display": ["Newsreader"],
+                        "h1": ["Newsreader"],
+                        "h2": ["Newsreader"],
+                        "label-caps": ["Inter"],
+                        "h3": ["Newsreader"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "interactive": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["84px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "interactive": ["14px", { "lineHeight": "1", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;
+        }
+    </style>
 </head>
-<body>
 
-    <div class="animated-border-box"></div>
-    
-    <header class="header">
-        <a href="#home" class="logo">Salih <span>Karakuş</span></a>
-        <i class='bx bx-menu' id="menu-icon"></i>
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#education">Education</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <section class="home" id="home"> 
-        <div class="home-content">
-            <h1>Hi, It's <span>Salih</span></h1>
-            <h3 class="text-animation">I'm a <span></span></h3>
-            <p>Hello! I'm a third-year Computer Engineering student with a strong passion for technology and innovation. Recently, I've been focusing on game development, and I also plan to enhance my skills in AI and web development.
-
-                Currently, I'm studying algorithms, C#, and game development, constantly striving to improve my problem-solving and programming abilities.
-                
-                My ultimate goal is to work in the gaming industry because developing games has been my childhood dream. I love the idea of bringing creative ideas to life and crafting interactive experiences that inspire others.
-                
-                I'm always eager to learn, explore new technologies, and push my limits to become a better developer every day!</p>
-
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/salihkarakus" target="_blank">
-                        <i class='bx bxl-linkedin'></i>
+<body
+    class="bg-background text-on-background min-h-screen antialiased selection:bg-on-background selection:text-background flex flex-col pt-24">
+    <!-- TopNavBar -->
+    <nav
+        class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-stone-950 border-b border-zinc-800">
+        <a class="text-xl font-serif italic text-zinc-100" href="#">SALIH KARAKUŞ</a>
+        <div class="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
+            <a class="nav-link text-zinc-100 font-serif italic uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-all duration-300 translate-x-1"
+                href="#about">HOME</a>
+            <a class="nav-link text-zinc-500 font-sans uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-all duration-300"
+                href="#work">SELECTED WORKS</a>
+            <a class="nav-link text-zinc-500 font-sans uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-all duration-300"
+                href="#capabilities">CAPABILITIES</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="Salih_Karakus_CV_ENG.pdf" download
+                class="uppercase Inter tracking-widest text-xs border border-zinc-800 px-4 py-2 hover:bg-zinc-100 hover:text-zinc-900 transition-colors duration-300 text-zinc-200">DOWNLOAD
+                CV</a>
+        </div>
+    </nav>
+    <main
+        class="flex-grow w-full max-w-container-max mx-auto px-4 md:px-gutter mt-section-gap flex flex-col gap-section-gap">
+        <!-- Hero Section -->
+        <section class="flex flex-col items-start gap-8 pt-12 md:pt-24 border-b border-surface-variant pb-32"
+            id="about">
+            <h1 class="font-display text-display text-on-background italic max-w-4xl tracking-tighter">
+                Computer Engineering Student &amp; Developer
+            </h1>
+            <p
+                class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl pl-12 border-l border-surface-variant">
+                Hi, I'm a 4th-year Computer Engineering student and aspiring Software Developer with a strong focus on
+                Data Analysis, AI, and
+                Mobile Development. Experienced in building modern mobile applications, as well as developing AI-driven
+                solutions with
+                LLM integrations. Skilled in Python, Machine Learning, and SQL, with a proven ability to transform
+                complex data into
+                impactful software and data-driven solutions
+            </p>
+            <div class="mt-8 flex items-center gap-8 flex-wrap">
+                <div class="flex items-center gap-4">
+                    <a class="px-6 py-4 bg-accent text-white font-label-caps text-label-caps hover:bg-opacity-90 transition-all duration-200 uppercase inline-block"
+                        href="Salih_Karakus_CV_ENG.pdf" download>
+                        Download CV
                     </a>
-                    <a href="https://github.com/salihkkus" target="_blank">
-                        <i class='bx bxl-github'></i>
-                    </a>
-                    <a href="https://www.instagram.com/kaaakus" target="_blank">
-                        <i class='bx bxl-instagram-alt'></i>
+                    <a class="px-6 py-4 border border-surface-variant text-on-surface hover:bg-surface-variant transition-all duration-200 uppercase inline-block font-label-caps text-label-caps"
+                        href="#work">
+                        View My Work
                     </a>
                 </div>
-                
+                <div class="flex items-center gap-6">
+                    <a class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-accent transition-colors duration-300 uppercase tracking-widest group"
+                        href="https://github.com/salihkkus" target="_blank">
+                        <span class="material-symbols-outlined text-[20px]">code</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-accent transition-colors duration-300 uppercase tracking-widest group"
+                        href="https://www.linkedin.com/in/salihkarakus" target="_blank">
+                        <span class="material-symbols-outlined text-[20px]">link</span>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Projects List -->
+        <section class="flex flex-col" id="work">
+            <div class="flex flex-col md:flex-row gap-12 mb-16">
+                <h2 class="font-label-caps text-label-caps text-outline w-32 shrink-0 pt-2 uppercase tracking-widest">
+                    Selected Works</h2>
+                <div class="flex flex-col w-full">
+                    <!-- Project Item 1 -->
+                    <article
+                        class="group border-b border-surface-variant py-8 hover:pl-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-l-4 hover:border-accent">
+                        <div class="flex flex-col gap-2 max-w-2xl">
+                            <h3 class="font-h3 text-h3 text-on-background">Resumise</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">NLP-powered intelligent resume
+                                analysis and career strategy platform. Resumise analyzes CVs semantically using BERT and
+                                LLMs to provide real-time matching scores and AI-driven career advice.</p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">BERT</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">LLMS</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">GEMINI
+                                    API</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">NLP</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">REACT</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">DOCKER</span>
+                            </div>
+                        </div>
+                        <a class="text-on-surface-variant group-hover:text-on-background transition-colors flex items-center gap-2 font-interactive text-interactive"
+                            href="https://github.com/salihkkus/resumise-app" target="_blank">
+                            View Repository <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </a>
+                    </article>
+                    <!-- Project Item 2 -->
+                    <article
+                        class="group border-b border-surface-variant py-8 hover:pl-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-l-4 hover:border-accent">
+                        <div class="flex flex-col gap-2 max-w-2xl">
+                            <h3 class="font-h3 text-h3 text-on-background">Sinerush</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">A modern film platform
+                                leveraging artificial intelligence to deliver personalized recommendations based on user
+                                mood, preferences, and context. Features include deep-dive AI-powered film analysis and
+                                interactive, engagement-focused cinematic tests.</p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">.NET</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">C#</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">AI
+                                    RECOMMENDATION ENGINES</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">SQL</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">WEB</span>
+                            </div>
+                        </div>
+                        <a class="text-on-surface-variant group-hover:text-on-background transition-colors flex items-center gap-2 font-interactive text-interactive"
+                            href="https://sinerush.com" target="_blank">
+                            Go To Website <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </a>
+                    </article>
+                    <!-- Project Item 3 -->
+                    <article
+                        class="group border-b border-surface-variant py-8 hover:pl-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-l-4 hover:border-accent">
+                        <div class="flex flex-col gap-2 max-w-2xl">
+                            <h3 class="font-h3 text-h3 text-on-background">Mobile Receipt OCR</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">A smart mobile application
+                                designed to automatically scan and extract structured data from receipts. It leverages
+                                Machine Learning models for Optical Character Recognition (OCR) combined with Regex
+                                pattern matching to accurately parse prices, dates, and purchased items.</p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">FLUTTER</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">GOOGLE
+                                    ML KIT</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">COMPUTER
+                                    VISION</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">REGEX</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">DART</span>
+                            </div>
+                        </div>
+                        <a class="text-on-surface-variant group-hover:text-on-background transition-colors flex items-center gap-2 font-interactive text-interactive"
+                            href="https://github.com/salihkkus?tab=repositories" target="_blank">
+                            View Repository <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </a>
+                    </article>
+                    <!-- Project Item 4 -->
+                    <article
+                        class="group border-b border-surface-variant py-8 hover:pl-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-l-4 hover:border-accent">
+                        <div class="flex flex-col gap-2 max-w-2xl">
+                            <h3 class="font-h3 text-h3 text-on-background">Mobile Reminder App</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">A comprehensive Android
+                                application developed for task management and agenda organization. It features reliable
+                                notifications to help users efficiently track important events, daily chores, and
+                                long-term goals.</p>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">KOTLIN</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">ANDROID
+                                    SDK</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">ROOM
+                                    DATABASE</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">PUSH
+                                    NOTIFICATIONS</span>
+                                <span
+                                    class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">REST
+                                    API</span>
+                            </div>
+                        </div>
+                        <a class="text-on-surface-variant group-hover:text-on-background transition-colors flex items-center gap-2 font-interactive text-interactive"
+                            href="https://github.com/salihkkus/ReminderApp" target="_blank">
+                            View Repository <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </a>
+                    </article>
 
+                </div>
+            </div>
+        </section>
+        <!-- Tech Stack -->
+        <section class="flex flex-col md:flex-row gap-12 pb-32" id="capabilities">
+            <h2 class="font-label-caps text-label-caps text-outline w-32 shrink-0 pt-2 uppercase tracking-widest">
+                Capabilities</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 w-full">
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-h3 text-h3 text-on-background border-b border-surface-variant pb-2">Languages</h4>
+                    <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+                        <li>Python (Data &amp; AI focus)</li>
+                        <li>Kotlin &amp; Dart (Mobile focus)</li>
+                        <li>C# / .NET</li>
+                        <li>JavaScript &amp; PHP</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-h3 text-h3 text-on-background border-b border-surface-variant pb-2">AI &amp; Web Dev</h4>
+                    <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+                        <li>LLM &amp; NLP Integration</li>
+                        <li>Data Analysis</li>
+                        <li>React &amp; Tailwind CSS</li>
+                        <li>Machine Learning</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-h3 text-h3 text-on-background border-b border-surface-variant pb-2">Mobile &amp; Backend</h4>
+                    <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+                        <li>Flutter &amp; Jetpack Compose</li>
+                        <li>MVVM &amp; MVC Architecture</li>
+                        <li>RESTful API Design</li>
+                        <li>Room &amp; SQL (T-SQL)</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-h3 text-h3 text-on-background border-b border-surface-variant pb-2 whitespace-nowrap">Tools &amp; Infrastructure</h4>
+                    <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+                        <li>Docker &amp; Git</li>
+                        <li>Team Collaboration</li>
+                        <li>MySQL &amp; MSSQL</li>
+                        <li>Agile Development</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-12 px-8 flex justify-between items-center bg-stone-950 border-t border-zinc-800 mt-auto"
+        id="contact">
+        <p class="font-label-caps text-label-caps text-zinc-500 uppercase tracking-tighter">
+            © 2026 SALIH KARAKUS    v2.0
+        </p>
+        <div class="flex gap-8">
+            <a class="font-label-caps text-label-caps text-zinc-500 hover:text-zinc-100 hover:underline transition-colors uppercase tracking-tighter"
+                href="https://www.linkedin.com/in/salihkarakus" target="_blank">LINKEDIN</a>
+            <a class="font-label-caps text-label-caps text-zinc-500 hover:text-zinc-100 hover:underline transition-colors uppercase tracking-tighter"
+                href="https://github.com/salihkkus" target="_blank">GITHUB</a>
         </div>
-
-        <div class="home-img">
-            <img src="sally.jpg" alt="">
-        </div>
-    </section>
-
-    <section class="education" id="education"> 
-        <h2 class="heading">Education</h2>
-
-        <div class="timeline-items">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2025</div>
-                <div class="timeline-content">
-                    <h3>High School</h3>
-                    <p>My high school years were both educational and fun. During this time, I discovered my passion for technology and coding, working on various projects to improve my skills. While focusing on academics, I also enjoyed social activities and friendships. Despite challenges, I gained problem-solving skills and discipline, which helped shape my future career path.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2025</div>
-                <div class="timeline-content">
-                    <h3>University</h3>
-                    <p>I am currently a 3rd-year Computer Engineering student. My studies focus on software development, algorithms, and system design. Recently, I have been exploring game development, AI, and web technologies to expand my expertise.
-
-                        Throughout my academic journey, I have worked on various projects involving .NET, C#, C++, Java, MSSQL, HTML, CSS and JavaScript. My goal is to apply my knowledge to real-world applications, especially in the gaming industry, which has been my passion since childhood.
-                        GPA : 3.28
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2025</div>
-                <div class="timeline-content">
-                    <h3>Job</h3>
-                    <p>I worked at Turkcell Yalova as a Communication and Sales Consultant for approximately 3.5 months. During this time, I gained valuable experience in a dynamic work environment, developed new skills, and learned a lot from my amazing colleagues. This experience was truly valuable for me, helping me improve my communication, sales, and customer service skills.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2025</div>
-                <div class="timeline-content">
-                    <h3>Internship</h3>
-                    <p>During my internship at XON Teknoloji A.Ş. in Gebze Bilişim Vadisi, I had the opportunity to work on various projects involving PHP, JavaScript, MySQL, and user authentication systems. I also gained hands-on experience with AI-powered services, including testing an AI Image Generation Service (Puq) and exploring LLM-based AI chat platforms (Zopn).
-
-                        This experience allowed me to improve my web development skills, understand AI model integration, and work in a collaborative tech environment.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <h2 class="heading">Services</h2>
-    
-        <div class="services-container">
-            <div class="service-box">
-                <div class="services-info">
-                    <h4>Game Development</h4>
-                    <p>I specialize in creating engaging and interactive games using modern game development technologies. My expertise includes Unity and C# programming, where I develop 2D and 3D games with compelling gameplay mechanics, smooth animations, and immersive user experiences. I focus on creating games that not only entertain but also showcase innovative design and technical excellence.</p>
-                </div>
-            </div>
-    
-            <div class="service-box">
-                <div class="services-info">
-                    <h4>Web Development</h4>
-                    <p>I develop responsive and dynamic websites using modern web technologies. My skills include HTML5, CSS3, JavaScript, and various frameworks to create user-friendly interfaces and robust backend systems. I focus on creating websites that are not only visually appealing but also optimized for performance, accessibility, and cross-platform compatibility.</p>
-                </div>
-            </div>
-    
-            <div class="service-box">
-                <div class="services-info">
-                    <h4>Mobile Development</h4>
-                    <p>I create mobile applications for iOS and Android platforms, focusing on native development and cross-platform solutions. My expertise includes developing user-friendly mobile interfaces, implementing efficient data management, and ensuring smooth performance across different devices. I prioritize creating apps that provide excellent user experience and meet modern mobile development standards.</p>
-                </div>
-            </div>
-
-            <div class="service-box">
-                <div class="services-info">
-                    <h4>Social Media & Content Creation</h4>
-                    <p>I create engaging digital content and manage social media presence for brands and individuals. My services include content strategy development, graphic design, video editing, and social media management across platforms like Instagram, TikTok, and YouTube. I focus on creating compelling visual content, building authentic connections with audiences, and implementing effective digital marketing strategies to increase engagement and brand visibility.</p>
-                </div>
-            </div>
-        </div> 
-    </section>
-
-    <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me</span></h2>
-    <div id="messageBox">Teşekkürler! Mesajınız alındı.</div>
-
-        
-        <form action="https://formspree.io/f/xayzqkqw" method="POST">
-            <div class="input-group">
-                <div class="input-box">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
-
-
-                <div class="input-box">
-                    <input type="text" name="phone" placeholder="Phone Number">
-                    <input type="text" name="subject" placeholder="Subject" required>
-                </div>
-            </div>
-
-            <div class="input-group-2">
-                <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
-                <input type="submit" value="Send Message" class="btn">
-            </div>
-        </form>
-    </section>
-    
-    <footer class="footer">
-        <div class="social">
-            <a href="https://www.linkedin.com/in/salihkarakus" target="_blank">
-                <i class='bx bxl-linkedin'></i>
-            </a>
-            <a href="https://github.com/salihkkus" target="_blank">
-                <i class='bx bxl-github'></i>
-            </a>
-            <a href="https://www.instagram.com/kaaakus" target="_blank">
-                <i class='bx bxl-instagram-alt'></i>
-            </a>
-        </div>
-
-        <ul class="list">
-            <li>
-                <a href="#">FAQ</a>
-            </li>
-
-            <li>
-                <a href="#">Services</a>
-            </li>
-
-            <li>
-                <a href="#">About Me</a>
-            </li>
-
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-
-            <p class="copyright">© Salih Karakus | All Rights Reserved | 2025</p>
-
     </footer>
-    <script src="script.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section[id]");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            const observerOptions = {
+                root: null,
+                rootMargin: "-120px 0px -40% 0px",
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            if (link.getAttribute("href") === `#${entry.target.id}`) {
+                                link.classList.remove("text-zinc-500", "font-sans");
+                                link.classList.add("text-zinc-100", "font-serif", "italic", "translate-x-1");
+                            } else {
+                                link.classList.remove("text-zinc-100", "font-serif", "italic", "translate-x-1");
+                                link.classList.add("text-zinc-500", "font-sans");
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(sec => observer.observe(sec));
+        });
+    </script>
 </body>
+
 </html>

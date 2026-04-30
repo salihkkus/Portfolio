@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Computer Science Student &amp; Developer</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "accent": "#10b981",
+                        "primary-container": "#e2e2e2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-variant": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary-container": "#b5b5b5",
+                        "secondary": "#c7c6c6",
+                        "on-tertiary-fixed-variant": "#4b4544",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-background": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-secondary": "#303031",
+                        "tertiary-fixed-dim": "#cec5c2",
+                        "surface": "#131313",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-bright": "#393939",
+                        "tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-tint": "#c6c6c6",
+                        "secondary-container": "#464747",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-container": "#6a6361",
+                        "surface-container": "#201f1f",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#444748",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#636465",
+                        "primary": "#ffffff",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed": "#1f1b19",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary": "#342f2e",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-dim": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131313",
+                        "inverse-primary": "#5d5f5f",
+                        "on-primary": "#2f3131",
+                        "tertiary-container": "#eae0dd",
+                        "tertiary-fixed": "#eae0dd",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#c7c6c6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "64px",
+                        "gutter": "32px",
+                        "section-gap": "128px",
+                        "container-max": "1200px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "display": ["Newsreader"],
+                        "h1": ["Newsreader"],
+                        "h2": ["Newsreader"],
+                        "label-caps": ["Inter"],
+                        "h3": ["Newsreader"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "interactive": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["84px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "h2": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "interactive": ["14px", { "lineHeight": "1", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen antialiased selection:bg-on-background selection:text-background flex flex-col pt-24">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 max-w-7xl mx-auto bg-stone-950 border-b border-zinc-800">
+<a class="text-xl font-serif italic text-zinc-100" href="#">ARCHIVE</a>
+<div class="hidden md:flex gap-8">
+<a class="text-zinc-100 font-serif italic uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-colors duration-300 translate-x-1 transition-transform" href="#work">WORK</a>
+<a class="text-zinc-500 font-sans uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-colors duration-300" href="#about">ABOUT</a>
+<a class="text-zinc-500 font-sans uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-colors duration-300" href="#contact">CONTACT</a>
+</div>
+<button class="uppercase Inter tracking-widest text-xs border border-zinc-800 px-4 py-2 hover:bg-zinc-100 hover:text-zinc-900 transition-colors duration-300 text-zinc-200">RESUME</button>
+</nav>
+<main class="flex-grow w-full max-w-container-max mx-auto px-4 md:px-gutter mt-section-gap flex flex-col gap-section-gap">
+<!-- Hero Section -->
+<section class="flex flex-col items-start gap-8 pt-12 md:pt-24 border-b border-surface-variant pb-32" id="about">
+<h1 class="font-display text-display text-on-background italic max-w-4xl tracking-tighter">
+                Computer Science Student &amp; Developer
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl pl-12 border-l border-surface-variant">
+                Translating complex logic into elegant, minimal systems. Focused on full-stack architecture, computational theory, and creating digital spaces with intention.
+            </p>
+<div class="mt-8 flex items-center gap-8">
+<a class="px-6 py-4 bg-accent text-white font-label-caps text-label-caps hover:bg-opacity-90 transition-all duration-200 uppercase inline-block" href="#">
+        Download CV
+    </a>
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-accent transition-colors duration-300 uppercase tracking-widest group" href="#">
+<span class="material-symbols-outlined text-[20px]">brand_awareness</span>
+<span>GitHub</span>
+</a>
+<a class="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-accent transition-colors duration-300 uppercase tracking-widest group" href="#">
+<span class="material-symbols-outlined text-[20px]">link</span>
+<span>LinkedIn</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Projects List -->
+<section class="flex flex-col" id="work">
+<div class="flex flex-col md:flex-row gap-12 mb-16">
+<h2 class="font-label-caps text-label-caps text-outline w-32 shrink-0 pt-2 uppercase tracking-widest">Selected Works</h2>
+<div class="flex flex-col w-full">
+<!-- Project Item 1 -->
+<article class="group border-b border-surface-variant py-8 hover:pl-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-l-4 hover:border-accent">
+<div class="flex flex-col gap-2 max-w-2xl">
+<h3 class="font-h3 text-h3 text-on-background">Distributed File System Protocol</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">A lightweight, custom protocol for peer-to-peer file sharing with eventual consistency guarantees and network partition tolerance.</p>
+<div class="flex gap-2 mt-2">
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">GO</span>
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">GRPC</span>
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">DISTRIBUTED SYSTEMS</span>
+</div>
+</div>
+<a class="text-on-surface-variant group-hover:text-on-background transition-colors flex items-center gap-2 font-interactive text-interactive" href="#">
+                            View Repository <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</article>
+<!-- Project Item 2 -->
+<article class="group border-b border-surface-variant py-8 hover:pl-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-l-4 hover:border-accent">
+<div class="flex flex-col gap-2 max-w-2xl">
+<h3 class="font-h3 text-h3 text-on-background">Minimalist Portfolio Engine</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">A statically generated blog and portfolio platform built without client-side JavaScript, focusing entirely on typography and raw HTML/CSS performance.</p>
+<div class="flex gap-2 mt-2">
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">RUST</span>
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">TAILWIND</span>
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">SSG</span>
+</div>
+</div>
+<a class="text-on-surface-variant group-hover:text-on-background transition-colors flex items-center gap-2 font-interactive text-interactive" href="#">
+                            View Repository <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</article>
+<!-- Project Item 3 -->
+<article class="group border-b border-surface-variant py-8 hover:pl-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-l-4 hover:border-accent">
+<div class="flex flex-col gap-2 max-w-2xl">
+<h3 class="font-h3 text-h3 text-on-background italic">Algorithmic Trading Backtester</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">A high-performance simulation engine for testing quantitative trading strategies against historical tick data with sub-millisecond latency.</p>
+<div class="flex gap-2 mt-2">
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">C++</span>
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">PYTHON</span>
+<span class="font-label-caps text-label-caps border border-accent/30 bg-accent/5 px-2 py-1 text-accent">FINANCE</span>
+</div>
+</div>
+<a class="text-on-surface-variant group-hover:text-on-background transition-colors flex items-center gap-2 font-interactive text-interactive" href="#">
+                            View Repository <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</article>
+</div>
+</div>
+</section>
+<!-- Tech Stack -->
+<section class="flex flex-col md:flex-row gap-12 pb-32">
+<h2 class="font-label-caps text-label-caps text-outline w-32 shrink-0 pt-2 uppercase tracking-widest">Capabilities</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 w-full">
+<div class="flex flex-col gap-4">
+<h4 class="font-h3 text-h3 text-on-background border-b border-surface-variant pb-2">Languages</h4>
+<ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+<li>Python</li>
+<li>C++ / C</li>
+<li>Rust</li>
+<li>JavaScript / TypeScript</li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-h3 text-h3 text-on-background border-b border-surface-variant pb-2">Frontend</h4>
+<ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+<li>React / Next.js</li>
+<li>Tailwind CSS</li>
+<li>Framer Motion</li>
+<li>WebGL</li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-h3 text-h3 text-on-background border-b border-surface-variant pb-2">Backend</h4>
+<ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+<li>Node.js / Express</li>
+<li>Django / FastAPI</li>
+<li>PostgreSQL</li>
+<li>Redis</li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-h3 text-h3 text-on-background border-b border-surface-variant pb-2">Tools</h4>
+<ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+<li>Git / GitHub Actions</li>
+<li>Docker</li>
+<li>AWS (EC2, S3)</li>
+<li>Linux / Bash</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex justify-between items-center max-w-7xl mx-auto bg-stone-950 border-t border-zinc-800 mt-auto" id="contact">
+<p class="font-label-caps text-label-caps text-zinc-500 uppercase tracking-tighter">
+            © 2024 ALL RIGHTS RESERVED
+        </p>
+<div class="flex gap-8">
+<a class="font-label-caps text-label-caps text-zinc-500 hover:text-zinc-100 hover:underline transition-colors uppercase tracking-tighter" href="#">EMAIL</a>
+<a class="font-label-caps text-label-caps text-zinc-500 hover:text-zinc-100 hover:underline transition-colors uppercase tracking-tighter" href="#">LINKEDIN</a>
+<a class="font-label-caps text-label-caps text-zinc-500 hover:text-zinc-100 hover:underline transition-colors uppercase tracking-tighter" href="#">GITHUB</a>
+</div>
+</footer>
+</body></html>
