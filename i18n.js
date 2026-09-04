@@ -3,8 +3,8 @@ const translations = {
     "SELECTED WORKS": "SEÇİLMİŞ ÇALIŞMALAR",
     "CAPABILITIES": "YETENEKLER",
     "VIEW CV": "CV GÖRÜNTÜLE",
-    "Computer Engineering Student & Developer": "Bilgisayar Mühendisliği Öğrencisi ve Geliştirici",
-    "Hi, I'm a 4th-year Computer Engineering student and aspiring Software Developer with a strong focus on Data Analysis, AI, and Mobile Development. Experienced in building modern mobile applications, as well as developing AI-driven solutions with LLM integrations. Skilled in Python, Machine Learning, and SQL, with a proven ability to transform complex data into impactful software and data-driven solutions": "Merhaba, Veri Analizi, Yapay Zeka ve Mobil Geliştirme odaklı 4. sınıf Bilgisayar Mühendisliği öğrencisi ve Yazılım Geliştirici adayıyım. Modern mobil uygulamalar geliştirmenin yanı sıra LLM entegrasyonlarıyla yapay zeka odaklı çözümler üretme konusunda deneyimliyim. Python, Makine Öğrenmesi ve SQL konularında yetkinim, karmaşık verileri etkili yazılımlara ve veri odaklı çözümlere dönüştürebilirim.",
+    "Junior Mobile Developer": "Junior Mobil Geliştirici",
+    "Hi, I'm a Computer Engineering graduate and Junior Mobile Developer with hands-on experience in cross-platform and native mobile development using Flutter and Kotlin/Jetpack Compose. Through consecutive industry internships, I've built production-oriented mobile applications end-to-end, from architecture to deployment. I'm currently contributing mobile development to an early-stage startup accepted into a business incubator.": "Merhaba, Flutter ve Kotlin/Jetpack Compose ile çapraz platform ve native mobil geliştirme konusunda uygulamalı deneyime sahip Bilgisayar Mühendisliği mezunu ve Junior Mobil Geliştiriciyim. Ardışık sektör stajları boyunca mimariden yayına almaya kadar uçtan uca mobil uygulama geliştirme yetkinliği kazandım. Şu anda bir iş kuluçka merkezine kabul edilmiş erken aşama bir girişime mobil geliştirici olarak katkı sağlıyorum.",
     "View CV": "CV Görüntüle",
     "View My Work": "Çalışmalarımı Gör",
     "Selected Works": "Seçilmiş Çalışmalar",
@@ -52,6 +52,24 @@ const translations = {
 let currentLang = sessionStorage.getItem('lang') || 'en';
 const originalTexts = new Map();
 
+const CV_FILES = {
+    en: 'Salih_Karakus_CV_Mobile_Photo_EN.pdf',
+    tr: 'Salih_Karakus_CV_Mobile_Photo_TR.pdf'
+};
+
+function updateCvLinks() {
+    const file = CV_FILES[currentLang];
+    document.querySelectorAll('[data-cv-href]').forEach(el => {
+        el.setAttribute('href', file);
+    });
+    document.querySelectorAll('[data-cv-src]').forEach(el => {
+        if (el.getAttribute('src') === file) return;
+        const clone = el.cloneNode(true);
+        clone.setAttribute('src', file);
+        el.parentNode.replaceChild(clone, el);
+    });
+}
+
 function translateNode(node) {
     if (node.nodeType === Node.TEXT_NODE) {
         let text = node.nodeValue;
@@ -84,6 +102,7 @@ function translateNode(node) {
 function applyTranslation() {
     translateNode(document.body);
     document.documentElement.lang = currentLang;
+    updateCvLinks();
     
     document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
         btn.textContent = currentLang === 'en' ? 'TR' : 'EN';
