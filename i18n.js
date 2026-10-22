@@ -3,8 +3,8 @@ const translations = {
     "SELECTED WORKS": "SEÇİLMİŞ ÇALIŞMALAR",
     "CAPABILITIES": "YETENEKLER",
     "VIEW CV": "CV GÖRÜNTÜLE",
-    "Junior Mobile Developer": "Junior Mobil Geliştirici",
-    "Hi, I'm a Computer Engineering graduate and Junior Mobile Developer with hands-on experience in cross-platform and native mobile development using Flutter and Kotlin/Jetpack Compose. Through consecutive industry internships, I've built production-oriented mobile applications end-to-end, from architecture to deployment. I'm currently contributing mobile development to an early-stage startup accepted into a business incubator.": "Merhaba, Flutter ve Kotlin/Jetpack Compose ile çapraz platform ve native mobil geliştirme konusunda uygulamalı deneyime sahip Bilgisayar Mühendisliği mezunu ve Junior Mobil Geliştiriciyim. Ardışık sektör stajları boyunca mimariden yayına almaya kadar uçtan uca mobil uygulama geliştirme yetkinliği kazandım. Şu anda bir iş kuluçka merkezine kabul edilmiş erken aşama bir girişime mobil geliştirici olarak katkı sağlıyorum.",
+    "Software Engineer | Full-Stack Developer": "Yazılım Mühendisi | Full-Stack Geliştirici",
+    "Hi, I'm a Computer Engineering graduate with hands-on experience across all software layers, including backend APIs, cloud/ERP integrations, and cross-platform mobile development. Deeply interested in AI, I actively contribute to on-premise LLM work and have experience in computer vision (YOLOv8) projects. I aim to deepen my career as an engineer who integrates AI into end-to-end systems — mobile, backend, on-premise LLM, and Computer Vision.": "Merhaba, backend API'ler, bulut/ERP entegrasyonları ve çapraz platform mobil geliştirme dahil olmak üzere tüm yazılım katmanlarında uygulamalı deneyime sahip Bilgisayar Mühendisliği mezunuyum. Yapay zekaya güçlü ilgi duyuyorum; şirket içi on-premise LLM çalışmalarına aktif katkı veriyorum ve görüntü işleme (YOLOv8) projelerinde deneyim kazandım. Yapay zekayı uçtan uca sistemlere — mobil, backend, on-premise LLM ve Computer Vision — entegre eden bir mühendis olarak kariyerimi bu alanda derinleştirmeyi hedefliyorum.",
     "View CV": "CV Görüntüle",
     "View My Work": "Çalışmalarımı Gör",
     "Selected Works": "Seçilmiş Çalışmalar",
@@ -53,8 +53,8 @@ let currentLang = sessionStorage.getItem('lang') || 'en';
 const originalTexts = new Map();
 
 const CV_FILES = {
-    en: 'Salih_Karakus_CV_Mobile_Photo_EN.pdf',
-    tr: 'Salih_Karakus_CV_Mobile_Photo_TR.pdf'
+    en: 'Salih_Karakus_CV_EN.pdf',
+    tr: 'Salih_Karakus_CV.pdf'
 };
 
 function updateCvLinks() {
