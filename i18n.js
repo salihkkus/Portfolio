@@ -16,25 +16,23 @@ const translations = {
     "A smart mobile application designed to automatically scan and extract structured data from receipts. It leverages Machine Learning models for Optical Character Recognition (OCR) combined with Regex pattern matching to accurately parse prices, dates, and purchased items.": "Fişlerden yapılandırılmış verileri otomatik olarak taramak ve çıkarmak için tasarlanmış akıllı bir mobil uygulama. Fiyatları, tarihleri ve satın alınan ürünleri doğru bir şekilde ayrıştırmak için Regex desen eşleştirme ile birlikte Optik Karakter Tanıma (OCR) makine öğrenimi modellerini kullanır.",
     "A comprehensive Android application developed for task management and agenda organization. It features reliable notifications to help users efficiently track important events, daily chores, and long-term goals.": "Görev yönetimi ve ajanda organizasyonu için geliştirilmiş kapsamlı bir Android uygulaması. Kullanıcıların önemli etkinlikleri, günlük işleri ve uzun vadeli hedefleri etkili bir şekilde takip etmelerine yardımcı olacak güvenilir bildirimler sunar.",
     "Capabilities": "Yetenekler",
-    "Languages": "Diller",
-    "Python (Data & AI focus)": "Python (Veri ve AI Odaklı)",
-    "Kotlin & Dart (Mobile focus)": "Kotlin ve Dart (Mobil Odaklı)",
-    "JavaScript & PHP": "JavaScript ve PHP",
-    "AI & Web Dev": "Yapay Zeka ve Web",
-    "LLM & NLP Integration": "LLM ve NLP Entegrasyonu",
-    "Data Analysis": "Veri Analizi",
-    "React & Tailwind CSS": "React ve Tailwind CSS",
-    "Machine Learning": "Makine Öğrenmesi",
-    "Mobile & Backend": "Mobil ve Backend",
-    "Flutter & Jetpack Compose": "Flutter ve Jetpack Compose",
-    "MVVM & MVC Architecture": "MVVM ve MVC Mimarisi",
-    "RESTful API Design": "RESTful API Tasarımı",
-    "Room & SQL (T-SQL)": "Room ve SQL (T-SQL)",
-    "Tools & Infrastructure": "Araçlar ve Altyapı",
-    "Docker & Git": "Docker ve Git",
-    "Team Collaboration": "Takım Çalışması",
-    "MySQL & MSSQL": "MySQL ve MSSQL",
-    "Agile Development": "Çevik (Agile) Geliştirme",
+    "AI & Data": "Yapay Zeka ve Veri",
+    "On-Premise LLM Integration": "On-Premise LLM Entegrasyonu",
+    "LLMs, BERT & NLP": "LLM'ler, BERT ve NLP",
+    "Edge AI, Gemini API & ML Kit": "Edge AI, Gemini API ve ML Kit",
+    "Mobile": "Mobil Geliştirme",
+    "Flutter & Dart": "Flutter ve Dart",
+    "Kotlin & Jetpack Compose": "Kotlin ve Jetpack Compose",
+    "Riverpod, MVVM & Clean Architecture": "Riverpod, MVVM ve Clean Architecture",
+    "Room, Hilt & Coroutines": "Room, Hilt ve Coroutines",
+    "Backend & Cloud": "Backend ve Bulut",
+    "Firebase & Supabase": "Firebase ve Supabase",
+    "MySQL, MSSQL & SQLite": "MySQL, MSSQL ve SQLite",
+    "Testing & Tools": "Test ve Araçlar",
+    "Unit, Widget & Integration Testing": "Unit, Widget ve Integration Test",
+    "CI/CD & GitHub Actions": "CI/CD ve GitHub Actions",
+    "Git & Docker": "Git ve Docker",
+    "Postman & Agile/Scrum": "Postman ve Agile/Scrum",
     "BACK TO HOME": "ANA SAYFAYA DÖN",
     "DOWNLOAD CV": "CV İNDİR",
     "Curriculum Vitae": "Özgeçmiş",
@@ -59,14 +57,13 @@ const CV_FILES = {
 
 function updateCvLinks() {
     const file = CV_FILES[currentLang];
+    const preview = file + '#view=FitH';
     document.querySelectorAll('[data-cv-href]').forEach(el => {
         el.setAttribute('href', file);
     });
     document.querySelectorAll('[data-cv-src]').forEach(el => {
-        if (el.getAttribute('src') === file) return;
-        const clone = el.cloneNode(true);
-        clone.setAttribute('src', file);
-        el.parentNode.replaceChild(clone, el);
+        if (el.getAttribute('src') === preview) return;
+        el.setAttribute('src', preview);
     });
 }
 
