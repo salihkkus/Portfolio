@@ -282,7 +282,8 @@
     if (!logo || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const GLYPHS = '01<>/{}[]#*+=$&%';
-    const original = logo.textContent;
+    const label = logo.querySelector('.logo-text');
+    const original = label.textContent;
     let frame = null;
 
     logo.addEventListener('mouseenter', () => {
@@ -294,11 +295,11 @@
         const tick = now => {
             // Each letter locks in place one after another, left to right.
             const settled = (now - start) / 35;
-            logo.textContent = [...original].map((c, i) =>
+            label.textContent = [...original].map((c, i) =>
                 c === ' ' || i < settled - 4 ? c : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
             ).join('');
             if (settled - 4 < original.length) frame = requestAnimationFrame(tick);
-            else logo.textContent = original;
+            else label.textContent = original;
         };
         frame = requestAnimationFrame(tick);
     });
