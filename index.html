@@ -149,21 +149,32 @@
         class="fixed top-0 w-full z-50 flex justify-between items-center px-6 md:px-8 py-6 bg-stone-950 border-b border-zinc-800">
         <a class="logo-term text-lg md:text-xl text-zinc-100" href="#"><span class="text-accent">&gt;</span> <span class="logo-text">salih.karakus</span><span class="logo-cursor">_</span></a>
         
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-toggle" class="md:hidden text-zinc-100 flex items-center">
-            <span class="material-symbols-outlined">menu</span>
-        </button>
+        <div class="md:hidden flex items-center gap-5">
+            <!-- Command palette (mobile has no Ctrl+K) -->
+            <button id="palette-open-mobile" aria-label="Komut paleti" class="text-zinc-100 flex items-center">
+                <span class="material-symbols-outlined">terminal</span>
+            </button>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-toggle" class="text-zinc-100 flex items-center">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
 
         <div class="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
-            <a class="nav-link text-zinc-100 font-serif italic uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-all duration-300 translate-x-1"
+            <a class="nav-link text-zinc-100 font-label-caps text-label-caps uppercase underline decoration-accent underline-offset-8 transition-all duration-300"
                 href="#about">HOME</a>
-            <a class="nav-link text-zinc-500 font-sans uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-all duration-300"
+            <a class="nav-link text-zinc-500 font-label-caps text-label-caps uppercase hover:text-zinc-100 transition-all duration-300"
                 href="#work">SELECTED WORKS</a>
-            <a class="nav-link text-zinc-500 font-sans uppercase Inter tracking-widest text-xs hover:text-zinc-100 transition-all duration-300"
+            <a class="nav-link text-zinc-500 font-label-caps text-label-caps uppercase hover:text-zinc-100 transition-all duration-300"
                 href="#capabilities">CAPABILITIES</a>
         </div>
 
         <div class="hidden md:flex items-center gap-4">
+            <button id="palette-open" class="flex items-center gap-3 uppercase Inter tracking-widest text-xs border border-zinc-800 px-4 py-2 text-zinc-500 hover:text-zinc-100 hover:border-zinc-600 transition-colors duration-300"
+                title="Komut paletini aç">
+                <span>Commands</span>
+                <kbd class="palette-kbd font-mono normal-case tracking-normal text-[11px] text-zinc-400 border border-zinc-700 px-1.5 py-0.5">Ctrl K</kbd>
+            </button>
             <a href="cv.html"
                 class="uppercase Inter tracking-widest text-xs border border-zinc-800 px-4 py-2 hover:bg-zinc-100 hover:text-zinc-900 transition-colors duration-300 text-zinc-200">VIEW
                 CV</a>
@@ -175,9 +186,9 @@
             <button id="mobile-menu-close" class="absolute top-6 right-6 text-zinc-100">
                 <span class="material-symbols-outlined text-3xl">close</span>
             </button>
-            <a class="mobile-nav-link text-2xl text-zinc-100 font-serif italic uppercase tracking-widest" href="#about">HOME</a>
-            <a class="mobile-nav-link text-2xl text-zinc-500 font-sans uppercase tracking-widest hover:text-zinc-100" href="#work">SELECTED WORKS</a>
-            <a class="mobile-nav-link text-2xl text-zinc-500 font-sans uppercase tracking-widest hover:text-zinc-100" href="#capabilities">CAPABILITIES</a>
+            <a class="mobile-nav-link text-2xl text-zinc-100 font-label-caps uppercase tracking-[0.2em]" href="#about">HOME</a>
+            <a class="mobile-nav-link text-2xl text-zinc-500 font-label-caps uppercase tracking-[0.2em] hover:text-accent" href="#work">SELECTED WORKS</a>
+            <a class="mobile-nav-link text-2xl text-zinc-500 font-label-caps uppercase tracking-[0.2em] hover:text-accent" href="#capabilities">CAPABILITIES</a>
             <a href="cv.html" class="uppercase Inter tracking-widest text-xs border border-zinc-800 px-8 py-4 text-zinc-200 mt-4">VIEW CV</a>
             <button class="lang-toggle-btn uppercase Inter tracking-widest text-xs border border-zinc-800 px-8 py-4 text-zinc-200 mt-2">TR</button>
         </div>
@@ -236,8 +247,8 @@
         <!-- Projects List -->
         <section class="flex flex-col" id="work">
             <div class="flex flex-col md:flex-row gap-12 mb-16">
-                <h2 class="logo-term text-sm text-zinc-500 w-40 shrink-0 pt-2 tracking-normal">
-                    <span class="text-accent">//</span> selected_works</h2>
+                <h2 class="font-label-caps text-label-caps text-outline w-32 shrink-0 pt-2 uppercase tracking-widest">
+                    Selected Works</h2>
                 <div class="flex flex-col w-full">
                     <!-- Project Item 1 -->
                     <article
@@ -389,8 +400,8 @@
         </section>
         <!-- Tech Stack -->
         <section class="flex flex-col md:flex-row gap-12 pb-32" id="capabilities">
-            <h2 class="logo-term text-sm text-zinc-500 w-40 shrink-0 pt-2 tracking-normal">
-                <span class="text-accent">//</span> capabilities</h2>
+            <h2 class="font-label-caps text-label-caps text-outline w-32 shrink-0 pt-2 uppercase tracking-widest">
+                Capabilities</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 w-full">
                 <div class="flex flex-col gap-4">
                     <h4 class="font-h3 text-lg md:text-h3 text-on-background border-b border-surface-variant pb-2">AI &amp; Data</h4>
@@ -491,21 +502,21 @@
                     if (entry.isIntersecting) {
                         navLinks.forEach(link => {
                             if (link.getAttribute("href") === `#${entry.target.id}`) {
-                                link.classList.remove("text-zinc-500", "font-sans");
-                                link.classList.add("text-zinc-100", "font-serif", "italic", "translate-x-1");
+                                link.classList.remove("text-zinc-500");
+                                link.classList.add("text-zinc-100", "underline", "decoration-accent", "underline-offset-8");
                             } else {
-                                link.classList.remove("text-zinc-100", "font-serif", "italic", "translate-x-1");
-                                link.classList.add("text-zinc-500", "font-sans");
+                                link.classList.remove("text-zinc-100", "underline", "decoration-accent", "underline-offset-8");
+                                link.classList.add("text-zinc-500");
                             }
                         });
                         
                         // Also update mobile links
                         mobileLinks.forEach(link => {
                             if (link.getAttribute("href") === `#${entry.target.id}`) {
-                                link.classList.remove("text-zinc-500");
-                                link.classList.add("text-zinc-100");
+                                link.classList.remove("text-zinc-500", "text-zinc-100");
+                                link.classList.add("text-zinc-100", "underline", "decoration-accent", "underline-offset-8");
                             } else {
-                                link.classList.remove("text-zinc-100");
+                                link.classList.remove("text-zinc-100", "underline", "decoration-accent", "underline-offset-8");
                                 link.classList.add("text-zinc-500");
                             }
                         });
@@ -518,6 +529,7 @@
     </script>
     <script src="i18n.js?v=20261022"></script>
     <script src="ascii-hero.js?v=20261104"></script>
+    <script src="terminal-ui.js?v=20261104"></script>
 </body>
 
 </html>
