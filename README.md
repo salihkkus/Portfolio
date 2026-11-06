@@ -42,6 +42,15 @@ Here are some of the key projects featured in my portfolio:
 - Agile Development
 - Team Collaboration
 
+## Pixel Mascot
+
+The site has a small green pixel mascot (`mascot.js`) that walks along the bottom of the screen. It talks in Turkish or English, reacts to page sections and links, naps when idle, and can be clicked or dragged around.
+
+- Open the command palette with **Ctrl+K** and type **"Maskot"** to see its commands: dance, change color, pet it, call a buddy, and turn its 8-bit sounds on or off.
+- It remembers returning visitors and the color you picked (stored in `localStorage`).
+- Shake your phone and it gets dizzy.
+- If your system has "reduce motion" turned on, it stays still.
+
 ## Connect with Me
 - **LinkedIn:** [linkedin.com/in/salihkarakus](https://www.linkedin.com/in/salihkarakus)
 - **GitHub:** [github.com/salihkkus](https://github.com/salihkkus)
