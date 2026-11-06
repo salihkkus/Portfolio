@@ -27,6 +27,12 @@
         { label: 'CV', hint: 'cv.html', run: () => go('cv.html') },
         { label: 'GitHub', hint: 'github.com/salihkkus', run: () => open('https://github.com/salihkkus') },
         { label: 'LinkedIn', hint: 'linkedin.com/in/salihkarakus', run: () => open('https://www.linkedin.com/in/salihkarakus') },
+        // Maskot komutları (mascot.js window.pixelMascot'u tanımlar)
+        { label: 'Maskot: dans et', hint: 'dans · dance', run: () => window.pixelMascot?.dance() },
+        { label: 'Maskot: renk değiştir', hint: 'renk · color', run: () => window.pixelMascot?.color() },
+        { label: 'Maskot: sev', hint: 'sev · pet', run: () => window.pixelMascot?.pet() },
+        { label: 'Maskot: arkadaşını çağır', hint: 'arkadaş · friend', run: () => window.pixelMascot?.friend() },
+        { label: 'Maskot: sesi aç/kapat', hint: 'ses · sound', run: () => window.pixelMascot?.sound() },
     ];
 
     const go = target => {
