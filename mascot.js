@@ -7,6 +7,8 @@
  * Telefonda sallanınca başı döner. Linklere ve hızlı kaydırmaya tepki verir,
  * tekrar gelenleri ve seçilen rengi hatırlar, isteğe bağlı 8-bit ses çıkarır.
  * Palete yazı yazılırken klavyeye basıyormuş gibi hareket eder.
+ * Ara sıra "View CV" / "View My Work" butonlarının üstüne zıplayıp orada oynar;
+ * sürükleyip butonun üstüne bırakınca da orada durur. Sayfa kayınca butonla gider.
  * "Hareketi azalt" tercihi açık olan kullanıcılar için yerinde durur.
  */
 (function () {
@@ -106,7 +108,9 @@
             bottom: ['Sonuna geldin!', 'Buraya kadar okudun, helal!'],
             back: ['Yine geldin!', 'Seni özlemiştim!', 'Tekrar hoş geldin!'],
             soundOn: ['Ses açık!'],
-            soundOff: ['Ses kapalı.']
+            soundOff: ['Ses kapalı.'],
+            button: ['Buradan her yer görünüyor!', 'Hop, yukarıdayım!', 'Bu buton benim!'],
+            play: ['Oyun zamanı!', 'Buton partisi!', 'Tepiniyorum!']
         },
         en: {
             morning: ['Good morning!', 'Morning! Had your coffee?'],
@@ -137,7 +141,9 @@
             bottom: ['You made it to the end!', 'You read it all, nice!'],
             back: ['You\'re back!', 'I missed you!', 'Welcome back!'],
             soundOn: ['Sound on!'],
-            soundOff: ['Sound off.']
+            soundOff: ['Sound off.'],
+            button: ['Great view from up here!', 'Hop, I\'m up here!', 'This button is mine!'],
+            play: ['Play time!', 'Button party!', 'Stomp stomp!']
         }
     };
     function line(kind) {
@@ -426,6 +432,7 @@
         function startJump(now, height, ms, toY) {
             setState('jump', ms, now);
             jump = { t0: now, ms: ms, fromY: y, toY: toY == null ? y : toY, h: height };
+            if (plat) jump.plat = plat; // butonun üstünde zıplıyor, yine butona iner
         }
         function busy() {
             return state === 'drag' || state === 'fall' || state === 'dance' || state === 'dizzy' || state === 'wobble' ||
@@ -444,11 +451,64 @@
             };
         }
 
+        // ---- Butonlar ("View CV", "View My Work"): üstlerinde durabilir, yürüyebilir, oynayabilir.
+        // plat = şu an üstünde durduğu buton; o butonun üst kenarı maskotun "zemini" olur.
+        var navEl = document.querySelector('nav.fixed');
+        var platEls = Array.prototype.slice.call(document.querySelectorAll('#about a[href="cv.html"], #about a[href="#work"]'));
+        var plat = null, dropFrom = null, platUntil = 0, platTarget = null;
+        // Buton görünür ve üstü boşsa konum bilgisini verir; değilse null (header altında, ekran dışında vb.)
+        function platInfo(p) {
+            var r = p.getBoundingClientRect();
+            if (!r.width || !r.height) return null;
+            var navBottom = Math.max(0, navEl ? navEl.getBoundingClientRect().bottom : 0);
+            if (r.top - HEIGHT < navBottom + 4 || r.top > window.innerHeight - GROUND - HEIGHT) return null;
+            if (r.right < WIDTH || r.left > window.innerWidth - WIDTH) return null;
+            var minX = Math.max(0, r.left - WIDTH * 0.2), maxX = Math.min(window.innerWidth - WIDTH, r.right - WIDTH * 0.8);
+            if (maxX < minX) minX = maxX = Math.max(0, r.left + r.width / 2 - WIDTH / 2);
+            return { r: r, y: window.innerHeight - GROUND - r.top, minX: minX, maxX: maxX };
+        }
+        function platUnder(skip) { // maskotun ortası hangi butonun üstünde?
+            var cx = x + WIDTH / 2;
+            for (var i = 0; i < platEls.length; i++) {
+                if (platEls[i] === skip) continue;
+                var pi = platInfo(platEls[i]);
+                if (pi && cx > pi.r.left && cx < pi.r.right) return { el: platEls[i], info: pi };
+            }
+            return null;
+        }
+        function leavePlat() { if (plat) { dropFrom = plat; plat = null; } }
+        // Kendi kendine bir butona gitmeye karar verir
+        function goButton(now) {
+            var ok = platEls.filter(function (p) { return platInfo(p); });
+            if (!ok.length) return false;
+            var p = ok[Math.floor(Math.random() * ok.length)], pi = platInfo(p);
+            var tx = pi.minX + Math.random() * (pi.maxX - pi.minX);
+            platTarget = { el: p, tx: tx };
+            setState('toButton', 8000, now);
+            return true;
+        }
+        function landOn(p, now) {
+            plat = p;
+            dropFrom = null;
+            platUntil = now + 15000 + Math.random() * 20000; // bir süre oynar, sonra iner
+        }
+        // Butondan aşağı, kenara doğru atlar
+        function jumpDown(now) {
+            var maxX = Math.max(0, window.innerWidth - WIDTH);
+            if (x < 80) dir = 1; else if (x > maxX - 80) dir = -1;
+            plat = null;
+            dropFrom = null;
+            startJump(now, 24, Math.min(900, 450 + y * 0.6), 0);
+            jump.fromX = x;
+            jump.toX = Math.max(0, Math.min(maxX, x + dir * 90));
+            sound.jump();
+        }
+
         // ---- Maskot komutları (palet kapanınca önce yere iner, sonra yapar)
         secret = function (cmd) {
             var now = performance.now();
             if (cmd === 'dance') {
-                if (y > 0) y = 0;
+                if (y > 0 && !plat) y = 0; // butonun üstündeyse orada dans eder
                 setState('dance', 3200, now);
                 say(line('dance'), 2500);
             } else if (cmd === 'color') {
@@ -471,7 +531,7 @@
         // ---- Sallanınca başı döner
         onShake = function (now) {
             if (state === 'drag') return;
-            if (y > 0 && state !== 'terminal') { state = 'fall'; vy = 0; }
+            if (y > 0 && state !== 'terminal') { leavePlat(); state = 'fall'; vy = 0; }
             else setState('dizzy', 2500, now);
             say(line('dizzy'));
             sound.dizzy();
@@ -519,6 +579,8 @@
             if (!drag.moved) {
                 drag.moved = true;
                 state = 'drag';
+                plat = null;
+                dropFrom = null;
                 el.style.cursor = 'grabbing';
                 say(line('drag'), 100000);
             }
@@ -533,6 +595,12 @@
                 state = 'fall';
                 vy = 0;
                 bubbleUntil = 0;
+                // Butonun üstüne (ya da biraz içine) bırakıldıysa üstüne konur
+                var under = platUnder(null);
+                if (under) {
+                    var feet = window.innerHeight - GROUND - y;
+                    if (feet > under.info.r.top - 4 && feet < under.info.r.bottom + HEIGHT / 2) y = under.info.y;
+                }
             }
             drag = null;
             el.style.cursor = 'grab';
@@ -600,7 +668,7 @@
             var v = (sy - lastScrollY) / Math.max(1, now - lastScrollT); // px/ms
             lastScrollY = sy;
             lastScrollT = now;
-            if (Math.abs(v) > 2.5 && y === 0 && (state === 'walk' || state === 'idle' || state === 'look' || state === 'wobble')) {
+            if (Math.abs(v) > 2.5 && (y === 0 || plat) && (state === 'walk' || state === 'idle' || state === 'look' || state === 'wobble')) {
                 scrollLean = v > 0 ? -1 : 1;
                 setState('wobble', 900, now);
                 if (now - wobbleTalk > 8000) { wobbleTalk = now; say(line('whoa')); }
@@ -619,7 +687,8 @@
                 var now = performance.now();
                 if (paletteOpen()) {
                     setZ(Z.top);
-                    if (state !== 'drag') setState('toTerminal', 15000, now);
+                    if (plat && state !== 'drag') { leavePlat(); state = 'fall'; vy = 0; } // önce butondan düşer
+                    else if (state !== 'drag') setState('toTerminal', 15000, now);
                 } else {
                     setZ(Z.base);
                     if (state === 'terminal' || state === 'toTerminal') {
@@ -675,6 +744,16 @@
 
             if (!buddy && now - bornAt > 45000) summonBuddy();
 
+            // Butonun üstündeyse: buton kayınca/ekrandan çıkınca onunla gider ya da düşer
+            var pinfo = plat ? platInfo(plat) : null;
+            if (plat && !pinfo && state !== 'drag') {
+                leavePlat();
+                state = 'fall';
+                vy = 0;
+            } else if (pinfo) {
+                if (state === 'jump') { jump.fromY = jump.toY = pinfo.y; } else if (state !== 'fall') y = pinfo.y;
+            }
+
             if ((state === 'walk' || state === 'idle' || state === 'look') && mouseNear() && !open) {
                 state = 'look';
                 dir = mouse.x < x + WIDTH / 2 ? -1 : 1;
@@ -682,13 +761,35 @@
             }
 
             // Fare 5 sn kıpırdamazsa altına koşar
-            if (mouse && !busy() && state !== 'chase' && state !== 'jump' && state !== 'sleep' && chasedFor !== mouseMovedAt &&
+            if (mouse && !busy() && !plat && state !== 'chase' && state !== 'jump' && state !== 'sleep' && state !== 'toButton' && chasedFor !== mouseMovedAt &&
                 now - mouseMovedAt > 5000 && Math.abs(mouse.x - (x + WIDTH / 2)) > 60) {
                 chasedFor = mouseMovedAt;
                 setState('chase', 8000, now);
             }
 
-            if (state === 'toTerminal' || state === 'chase') {
+            if (state === 'toButton') {
+                // Butonun yanına koşar, sonra çapraz zıplayıp üstüne konar
+                var ti = platInfo(platTarget.el);
+                if (!ti || now > stateUntil) {
+                    nextWalk(now);
+                } else {
+                    var ltx = Math.max(ti.minX, Math.min(ti.maxX, platTarget.tx));
+                    var side = ltx < x ? -1 : 1;
+                    var ax = Math.abs(ltx - x) < 70 ? x : Math.max(0, Math.min(maxX, ltx - side * 70));
+                    var da = ax - x;
+                    if (Math.abs(da) < 4) {
+                        dir = side;
+                        startJump(now, 40, Math.min(1100, 550 + ti.y * 0.9), ti.y);
+                        jump.toPlat = platTarget.el;
+                        jump.fromX = x;
+                        jump.toX = ltx;
+                        sound.bigJump();
+                    } else {
+                        dir = da < 0 ? -1 : 1;
+                        x += dir * Math.min(Math.abs(da), speed * 4 * dt);
+                    }
+                }
+            } else if (state === 'toTerminal' || state === 'chase') {
                 var tx = state === 'chase' ? Math.max(0, Math.min(maxX, mouse ? mouse.x - WIDTH / 2 : x)) : perch().x;
                 var d = tx - x;
                 dir = d < 0 ? -1 : 1;
@@ -705,10 +806,20 @@
                     x += dir * Math.min(Math.abs(d), speed * 4 * dt); // koşarak gider
                 }
             } else if (now > stateUntil && (state === 'walk' || state === 'idle' || state === 'look' || state === 'sleep')) {
-                if (state === 'walk') {
+                if (state === 'walk' && plat) {
+                    // Butonun üstünde oyun: zıplar, dans eder, dinlenir, bir süre sonra iner
+                    var rp = Math.random();
+                    if (now > platUntil) jumpDown(now);
+                    else if (rp < 0.25) { startJump(now, 22, 500); sound.jump(); }
+                    else if (rp < 0.45) { setState('dance', 2400, now); say(line('play')); }
+                    else if (rp < 0.65) setState('idle', 1500 + Math.random() * 2000, now);
+                    else if (rp < 0.72) { setState('sleep', 4000 + Math.random() * 4000, now); nextZ = now; }
+                    else { dir = -dir; setState('walk', 1500 + Math.random() * 2500, now); }
+                } else if (state === 'walk') {
                     var r = Math.random();
                     var sleepChance = night ? 0.3 : 0.1; // gece daha sık uyur
-                    if (r < 0.2) startJump(now, 18, 500);
+                    if (r < 0.15 && goButton(now)) { /* butona gidiyor */ }
+                    else if (r < 0.2) startJump(now, 18, 500);
                     else if (r < 0.45) setState('idle', 1500 + Math.random() * 2500, now);
                     else if (r < 0.45 + sleepChance) { setState('sleep', 6000 + Math.random() * 6000, now); nextZ = now; }
                     else { dir = -dir; nextWalk(now); }
@@ -722,12 +833,25 @@
 
             if (state === 'jump') {
                 var t = Math.min(1, (now - jump.t0) / jump.ms);
+                if (jump.toPlat) {
+                    var tp = platInfo(jump.toPlat);
+                    if (tp) { jump.toY = tp.y; jump.toX = Math.max(tp.minX, Math.min(tp.maxX, jump.toX)); }
+                }
                 y = jump.fromY + (jump.toY - jump.fromY) * t;
                 lift = Math.sin(Math.PI * t) * jump.h;
-                if (!jump.toTerminal && !jump.keepTerminal && !jump.noMove) x += dir * speed * dt;
-                if (t >= 1) {
+                if (jump.toX != null) x = jump.fromX + (jump.toX - jump.fromX) * t;
+                else if (!jump.toTerminal && !jump.keepTerminal && !jump.noMove) x += dir * speed * dt;
+                if (jump.toPlat && !tp) { state = 'fall'; vy = 0; } // buton kayboldu
+                else if (t >= 1) {
                     y = jump.toY;
-                    if (jump.toTerminal || (jump.keepTerminal && open)) {
+                    if (jump.toPlat) {
+                        landOn(jump.toPlat, now);
+                        sound.land();
+                        say(line('button'), 2600);
+                        setState('idle', 1200, now);
+                    } else if (jump.plat && plat) {
+                        nextWalk(now);
+                    } else if (jump.toTerminal || (jump.keepTerminal && open)) {
                         state = 'terminal';
                         if (jump.toTerminal) say(line('terminal'), 3000);
                     } else if (y > 0) {
@@ -741,20 +865,26 @@
                     }
                 }
             } else if (state === 'fall') {
+                var prevY = y;
                 vy += 1400 * dt;
                 y -= vy * dt;
-                var floor = 0;
+                var floor = 0, landPlat = null;
                 if (open) {
                     var pp = perch(), br = paletteBox.getBoundingClientRect();
                     if (x + WIDTH > br.left && x < br.right && y + vy * dt >= pp.y - 2 && y <= pp.y) floor = pp.y;
                 }
+                if (!floor) {
+                    var pu = platUnder(dropFrom);
+                    if (pu && prevY >= pu.info.y - 2 && y <= pu.info.y) { floor = pu.info.y; landPlat = pu.el; }
+                }
                 if (y <= floor) {
                     y = floor;
-                    say(line('land'));
+                    say(line(landPlat ? 'button' : 'land'));
                     sound.land();
-                    if (floor > 0) state = 'terminal';
+                    if (landPlat) { landOn(landPlat, now); startJump(now, 8, 250); }
+                    else if (floor > 0) state = 'terminal';
                     else if (open) setState('toTerminal', 15000, now);
-                    else startJump(now, 8, 250, 0);
+                    else { dropFrom = null; startJump(now, 8, 250, 0); }
                 }
             } else if (state === 'walk') {
                 x += dir * speed * dt;
@@ -780,7 +910,11 @@
                 }
             }
 
-            if (state === 'walk' || state === 'jump') {
+            if (plat && pinfo && (state === 'walk' || state === 'jump')) {
+                // butonun kenarına gelince geri döner
+                if (x <= pinfo.minX) { x = pinfo.minX; dir = 1; }
+                if (x >= pinfo.maxX) { x = pinfo.maxX; dir = -1; }
+            } else if (state === 'walk' || state === 'jump') {
                 if (x <= 0) { x = 0; dir = 1; }
                 if (x >= maxX) { x = maxX; dir = -1; }
             }
@@ -804,7 +938,7 @@
 
             if (typing) {
                 sprite.show(Math.floor(now / 70) % 2 ? 'dance' : 'walk1'); // kollar inip kalkar
-            } else if (state === 'walk' || state === 'toTerminal' || state === 'chase') {
+            } else if (state === 'walk' || state === 'toTerminal' || state === 'chase' || state === 'toButton') {
                 sprite.show(Math.floor(now / (state === 'walk' ? 180 : 90)) % 2 ? 'walk2' : 'walk1');
             } else if (state === 'jump' || state === 'fall' || state === 'drag' || state === 'wobble') {
                 sprite.show('jump');
