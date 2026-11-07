@@ -152,7 +152,7 @@
         class="fixed top-0 w-full z-50 flex justify-between items-center px-6 md:px-8 py-6 bg-stone-950 border-b border-zinc-800">
         <a class="logo-term text-lg md:text-xl text-zinc-100" href="#"><span class="text-accent">&gt;</span> <span class="logo-text">salih.karakus</span><span class="logo-cursor">_</span></a>
         
-        <div class="md:hidden flex items-center gap-5">
+        <div class="lg:hidden flex items-center gap-5">
             <!-- Command palette (mobile has no Ctrl+K) -->
             <button id="palette-open-mobile" aria-label="Komut paleti" class="text-zinc-100 flex items-center">
                 <span class="material-symbols-outlined">terminal</span>
@@ -163,7 +163,7 @@
             </button>
         </div>
 
-        <div class="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
+        <div class="hidden lg:flex gap-6 xl:gap-8 xl:absolute xl:left-1/2 xl:-translate-x-1/2">
             <a class="nav-link text-zinc-100 font-label-caps text-label-caps uppercase underline decoration-accent underline-offset-8 transition-all duration-300"
                 href="#about">HOME</a>
             <a class="nav-link text-zinc-500 font-label-caps text-label-caps uppercase hover:text-zinc-100 transition-all duration-300"
@@ -172,10 +172,10 @@
                 href="#capabilities">CAPABILITIES</a>
         </div>
 
-        <div class="hidden md:flex items-center gap-4">
+        <div class="hidden lg:flex items-center gap-3 xl:gap-4">
             <button id="palette-open" class="flex items-center gap-3 uppercase Inter tracking-widest text-xs border border-zinc-800 px-4 py-2 text-zinc-500 hover:text-zinc-100 hover:border-zinc-600 transition-colors duration-300"
                 title="Komut paletini aç">
-                <span>Commands</span>
+                <span class="hidden xl:inline">Commands</span>
                 <kbd class="palette-kbd font-mono normal-case tracking-normal text-[11px] text-zinc-400 border border-zinc-700 px-1.5 py-0.5">Ctrl K</kbd>
             </button>
             <a href="cv.html"
@@ -185,7 +185,7 @@
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-stone-950 z-[60] flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+        <div id="mobile-menu" class="fixed inset-0 bg-stone-950 z-[60] flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-500 ease-in-out lg:hidden">
             <button id="mobile-menu-close" class="absolute top-6 right-6 text-zinc-100">
                 <span class="material-symbols-outlined text-3xl">close</span>
             </button>
